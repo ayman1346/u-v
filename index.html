@@ -6,6 +6,191 @@
     <title>مطعم اليوڤي للبيتزا والمشروبات</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 7px;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .hero {
+            padding: 8px 0;
+        }
+
+        .hero-content {
+            width: 60px;
+            height: 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 0.3rem;
+            margin: 0.5px 0;
+        }
+
+        .hero-content p {
+            font-size: 0.1rem;
+            margin: 0.2px 0;
+        }
+
+        button, .add-to-cart-btn {
+            padding: 0.5px 1.5px;
+            font-size: 0.1rem;
+        }
+
+        .menu-grid {
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            gap: 1px;
+        }
+
+        .menu-item {
+            padding: 0.5px;
+        }
+
+        .menu-item img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .menu-item h4 {
+            font-size: 0.15rem;
+            margin: 0.2px 0;
+        }
+
+        .menu-item p {
+            font-size: 0.08rem;
+            margin: 0.1px 0;
+        }
+
+        header {
+            height: 8px;
+        }
+
+        .logo-text {
+            font-size: 0.1rem;
+            margin: 0.5px 0;
+        }
+
+        .section-icons {
+            padding: 0.5px;
+        }
+
+        .icon-circle {
+            width: 8px;
+            height: 8px;
+        }
+
+        .about-content {
+            padding: 1px;
+        }
+
+        .modal-content {
+            width: 80px;
+            padding: 1px;
+        }
+
+        .cart-count, .size-btn {
+            font-size: 0.1rem;
+        }
+
+        /* تصغير قسم الأكثر طلباً */
+        .featured-items {
+            padding: 3px;
+        }
+
+        .featured-items h2 {
+            font-size: 0.6rem;
+            margin-bottom: 3px;
+        }
+
+        .featured-items .menu-grid {
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 3px;
+        }
+
+        .featured-items .menu-item {
+            padding: 2px;
+            margin: 0.5px;
+        }
+
+        .featured-items .menu-item img {
+            width: 45px;
+            height: 45px;
+        }
+
+        .featured-items .menu-item h4 {
+            font-size: 0.3rem;
+            margin: 0.5px 0;
+        }
+
+        .featured-items .menu-item p {
+            font-size: 0.15rem;
+            margin: 0.5px 0;
+        }
+
+        .featured-items .menu-item .sizes {
+            margin: 0.5px 0;
+        }
+
+        .featured-items .menu-item .size-btn {
+            padding: 0.5px 2px;
+            font-size: 0.2rem;
+        }
+
+        .featured-items .menu-item .add-to-cart-btn {
+            padding: 0.5px 2px;
+            font-size: 0.2rem;
+        }
+
+        .featured-items .menu-item .badge {
+            font-size: 0.15rem;
+            padding: 0.5px 0.5px;
+        }
+
+        .featured-items .hero-content {
+            width: 100px;
+            height: 80px;
+        }
+
+        .featured-items .hero-content h1 {
+            font-size: 0.6rem;
+            margin: 1.5px 0;
+        }
+
+        .featured-items .hero-content p {
+            font-size: 0.2rem;
+            margin: 0.5px 0;
+        }
+
+        .featured-items .section-icons {
+            padding: 0.5px;
+        }
+
+        .featured-items .icon-circle {
+            width: 12px;
+            height: 12px;
+        }
+
+        .featured-items .section-icon span {
+            font-size: 0.2rem;
+        }
+
+        .featured-items .section-icon .cart-count {
+            font-size: 0.15rem;
+        }
+
+        .featured-items .section-icon a {
+            font-size: 0.2rem;
+        }
+
+        .featured-items .section-icon small {
+            font-size: 0.15rem;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -20,18 +205,17 @@
                     </div>
                 </div>
             </a>
-            <button class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="nav-links">
-                <a href="#home" class="active"><i class="fas fa-home"></i> الرئيسية</a>
-                <a href="#about"><i class="fas fa-info-circle"></i> عنا</a>
-                <a href="#" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
-            </div>
         </nav>
     </header>
 
     <div class="section-icons">
+        <a href="#" class="section-icon cart-icon">
+            <div class="icon-circle">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <span>السلة</span>
+            <span class="cart-count">0</span>
+        </a>
         <a href="#pizza" class="section-icon">
             <div class="icon-circle">
                 <i class="fas fa-pizza-slice"></i>
@@ -1756,7 +1940,24 @@
         let lastScrollTop = 0;
         const header = document.querySelector('header');
         const nav = document.querySelector('nav');
+        const cartModal = document.getElementById('cartModal');
+        const cartButtons = document.querySelectorAll('.cart-icon');
+        const closeButtons = document.querySelectorAll('.close-modal');
         
+        // إخفاء شريط التنقل عند فتح نافذة السلة
+        cartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                header.classList.add('nav-hidden');
+            });
+        });
+
+        // إظهار شريط التنقل عند إغلاق نافذة السلة
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                header.classList.remove('nav-hidden');
+            });
+        });
+
         window.addEventListener('scroll', function() {
             let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
             
