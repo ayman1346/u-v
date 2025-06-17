@@ -28,6 +28,58 @@ document.querySelectorAll('nav a').forEach(anchor => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    // ... الكود السابق ...
+
+    // معالجة حجز الطاولات
+    const tableReservation = document.getElementById('tableReservation');
+    const reserveTableBtn = document.getElementById('reserveTable');
+    const cancelTableBtn = document.getElementById('cancelTable');
+    const tableNumberSelect = document.getElementById('tableNumber');
+
+    // إظهار قسم حجز الطاولات عند اختيار "صاله"
+    const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
+    orderTypeRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'dineIn') {
+                tableReservation.style.display = 'block';
+            } else {
+                tableReservation.style.display = 'none';
+            }
+        });
+    });
+
+    // معالجة حجز الطاولة
+    reserveTableBtn.addEventListener('click', function() {
+        const selectedTable = tableNumberSelect.value;
+        if (selectedTable) {
+            // إضافة الطاولة المحددة إلى السلة
+            const tableItem = document.createElement('div');
+            tableItem.className = 'cart-item';
+            tableItem.innerHTML = `
+                <h4>طاولة رقم ${selectedTable}</h4>
+                <p>تم حجز الطاولة بنجاح</p>
+            `;
+            
+            // إضافة الطاولة إلى قائمة السلة
+            const cartItems = document.getElementById('cartItems');
+            cartItems.insertBefore(tableItem, cartItems.firstChild);
+            
+            // إخفاء قسم حجز الطاولات
+            tableReservation.style.display = 'none';
+            
+            // إظهار رسالة نجاح
+            alert('تم حجز الطاولة رقم ' + selectedTable + ' بنجاح');
+        } else {
+            alert('الرجاء اختيار رقم الطاولة أولاً');
+        }
+    });
+
+    // معالجة إلغاء حجز الطاولة
+    cancelTableBtn.addEventListener('click', function() {
+        tableReservation.style.display = 'none';
+    });
+
+    // ... باقي الكود السابق ...
     // تفعيل القائمة المتحركة
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');

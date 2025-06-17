@@ -6,6 +6,7 @@
     <title>مطعم اليوڤي للبيتزا والمشروبات</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -246,15 +247,9 @@
     <section id="home" class="hero" style="background-color: #000;">
         <div class="hero-overlay"></div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-            <div class="hero-content" style="background: #000000; width: 350px; height: 350px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 5px solid #ffd700; box-shadow: 0 0 30px #ffd700, inset 0 0 50px #000000; padding: 20px;">
-                <h1 style="color: #ffd700; margin: 0 0 10px 0; font-size: 2rem; text-align: center; text-shadow: 0 0 10px #ffd700;">مطعم اليوڤي</h1>
-                <p style="color: #ffd700; margin: 0; font-size: 1.2rem; text-align: center;">اللي مجربش لسا ميعرفش...</p>
+            <div class="hero-content" style="background: #000000; width: 350px; height: 350px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 5px solid #ffd700; box-shadow: 0 0 30px #ffd700, inset 0 0 50px #000000;">
+                <img src="صوره الدوله .jpg" alt="صورة دولة اليوفي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
             </div>
-            <a href="tel:+201003410708" style="display: inline-block; background-color: #ffd700; color: #000000; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-size: 1.3rem; font-weight: bold; box-shadow: 0 0 20px #ffd700; border: 3px solid #000000; margin-top: 10px;">
-                <i class="fas fa-phone-alt"></i>
-                اتصل بنا
-                <small style="display: block; font-size: 1rem; margin-top: 5px; direction: ltr;">+20 100 341 0708</small>
-            </a>
         </div>
     </section>
 
@@ -1837,24 +1832,6 @@
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <h2>اتصل بنا</h2>
-        <div class="contact-info">
-            <div>
-                <i class="fas fa-phone"></i>
-                <p>01003410708</p>
-            </div>
-            <div>
-                <i class="fas fa-map-marker-alt"></i>
-                <p>العنوان: برج العرب الجديده، الحي السكني الاول، ميجا مول مقابل كانديلا</p>
-            </div>
-            <div>
-                <i class="fas fa-clock"></i>
-                <p>مواعيد العمل: 10 صباحاً - 4 صباحاً</p>
-            </div>
-        </div>
-    </section>
-
     <footer>
         <div class="social-links">
             <a href="#" class="social-icon" target="_blank">
@@ -1883,6 +1860,31 @@
             <span class="close-modal">&times;</span>
             <h2>سلة المشتريات</h2>
             <div id="cartItems"></div>
+            
+            <!-- قسم حجز الطاولات -->
+            <div id="tableReservation" style="display: none;">
+                <h3>حجز طاولة</h3>
+                <div class="table-selector">
+                    <label for="tableNumber">اختر رقم الطاولة:</label>
+                    <select id="tableNumber" name="tableNumber">
+                        <option value="">اختر رقم الطاولة</option>
+                        <option value="1">طاولة 1</option>
+                        <option value="2">طاولة 2</option>
+                        <option value="3">طاولة 3</option>
+                        <option value="4">طاولة 4</option>
+                        <option value="5">طاولة 5</option>
+                        <option value="6">طاولة 6</option>
+                        <option value="7">طاولة 7</option>
+                        <option value="8">طاولة 8</option>
+                        <option value="9">طاولة 9</option>
+                        <option value="10">طاولة 10</option>
+                    </select>
+                </div>
+                <div class="table-buttons">
+                    <button id="reserveTable" class="reserve-btn">حجز الطاولة</button>
+                    <button id="cancelTable" class="cancel-btn">إلغاء</button>
+                </div>
+            </div>
             <div class="order-type">
                 <label>نوع الطلب:</label>
                 <div class="order-options">
