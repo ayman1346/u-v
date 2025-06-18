@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="protect.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -49,28 +50,37 @@
         }
 
         .menu-item {
-            padding: 0.1px;
+            padding: 0.3px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.3px;
+            width: 100%;
+            max-width: 105px;
         }
 
         .menu-item img {
-            width: 55px;
-            height: 55px;
+            width: 20px;
+            height: 20px;
+            margin-bottom: 0;
         }
 
         .menu-item h4 {
-            font-size: 0.7rem;
-            margin: 0.2rem;
+            font-size: 0.5rem;
+            margin: 0.04rem;
             font-weight: bold;
         }
 
         .menu-item .description {
-            font-size: 0.4rem;
-            margin: 0.2rem;
-            line-height: 1.5;
-            white-space: normal;
-            overflow: visible;
-            text-overflow: clip;
+            font-size: 0.3rem;
+            margin: 0.02rem;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             display: block;
+            max-width: 80px;
         }
 
         .menu-item p {
@@ -146,25 +156,33 @@
         }
 
         .featured-items .menu-item .price {
-            font-size: 0.3rem;
-            margin: 0.05px 0;
+            font-size: 0.2rem;
+            margin: 0.01rem;
             color: #000;
             font-weight: bold;
         }
 
         .menu-item .sizes {
-            margin: 0.0003px 0;
+            margin: 0.1rem 0;
+            width: 100%;
         }
 
         .menu-item .size-btn {
-            padding: 0.7px 3px;
-            font-size: 0.8rem;
+            padding: 0.05px 0.25px;
+            font-size: 0.32rem;
             margin: 0.05px;
+            width: 100%;
+            max-width: 95px;
+            order: 2;
         }
 
         .menu-item .add-to-cart-btn {
-            padding: 0.02px 0.15px;
-            font-size: 0.13rem;
+            padding: 0.04px 0.1px;
+            font-size: 0.12rem;
+            margin-top: 0;
+            width: 100%;
+            max-width: 40px;
+            order: 3;
         }
 
         .menu-item .add-to-cart-btn i {
@@ -847,7 +865,6 @@
                 <div class="menu-item" data-drink="tea">
                     <img src="بيتزا/شاي.jpg" alt="شاي فلفر">
                     <h4>شاي فلفر</h4>
-                    <p class="description">شاي</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 35 ج.م</button>
                     </div>
@@ -927,7 +944,6 @@
                 <div class="menu-item" data-drink="hot-nutella">
                     <img src="بيتزا/هوت-نيوتيلا.jpg" alt="هوت شوكلت نيوتيلا">
                     <h4>هوت شوكلت نيوتيلا</h4>
-                    <p class="description">شوكلاتة</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55 ج.م</button>
                     </div>
@@ -1009,7 +1025,6 @@
                 <div class="menu-item" data-drink="double-espresso">
                     <img src="بيتزا/قهوة.jpg" alt="اسبريسو دابل">
                     <h4>اسبريسو دابل</h4>
-                    <p class="description">أسبريسو</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 40 ج.م</button>
                     </div>
@@ -1089,7 +1104,6 @@
                 <div class="menu-item" data-drink="mocha">
                     <img src="بيتزا/قهوة.jpg" alt="موكا">
                     <h4>موكا</h4>
-                    <p class="description">موكا</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55 ج.م</button>
                     </div>
@@ -1112,7 +1126,6 @@
                 <div class="menu-item" data-drink="vanilla-milkshake">
                     <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك فانيليا">
                     <h4>ميلك شيك فانيليا</h4>
-                    <p class="description">ميلك شيك</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 65 ج.م</button>
                     </div>
@@ -1182,7 +1195,6 @@
                 <div class="menu-item" data-drink="pina-colada-milkshake">
                     <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك بينا كولادا">
                     <h4>ميلك شيك بينا كولادا</h4>
-                    <p class="description">ميلك شيك</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 100 ج.م</button>
                     </div>
@@ -1267,7 +1279,6 @@
                 <div class="menu-item" data-drink="ice-mocha">
                     <img src="بيتزا/قهوة.jpg" alt="ايس موكا">
                     <h4>ايس موكا</h4>
-                    <p class="description">قهوة مثلجة</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 70 ج.م</button>
                     </div>
@@ -1310,7 +1321,6 @@
                 <div class="menu-item" data-drink="classic-mojito">
                     <img src="بيتزا/موهيتو.jpg" alt="موهيتو كلاسيك">
                     <h4>موهيتو كلاسيك</h4>
-                    <p class="description">موهيتو</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55ج.م</button>
                     </div>
@@ -1363,7 +1373,6 @@
                 <div class="menu-item" data-drink="caramel-frappe">
                     <img src="بيتزا/فرابيه.jpg" alt="فرابيه كراميل">
                     <h4>فرابيه كراميل</h4>
-                    <p class="description">فرابيه</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 70 ج.م</button>
                     </div>
@@ -1416,7 +1425,6 @@
                 <div class="menu-item" data-drink="mango">
                     <img src="بيتزا/مانجو.jpg" alt="عصير مانجو">
                     <h4>عصير مانجو</h4>
-                    <p class="description">عصير</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55ج.م</button>
                     </div>
@@ -1608,7 +1616,6 @@
 
          <div class="menu-item">
                     <h4>فته كيندر</h4>
-                    <p class="description">فته</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 90 ج.م</button>
                     </div>
@@ -1783,7 +1790,6 @@
 
           <div class="menu-item">
                     <h4>بيريل </h4>
-                    <p class="description">بيريل </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 30 ج.م</button>
                     </div>
