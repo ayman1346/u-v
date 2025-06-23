@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="protect.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -45,42 +44,43 @@
         }
 
         .menu-grid {
-            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-            gap: 0;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 15px;
         }
 
         .menu-item {
-            padding: 0.3px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
-            gap: 0.3px;
-            width: 100%;
-            max-width: 105px;
         }
 
         .menu-item img {
-            width: 20px;
-            height: 20px;
-            margin-bottom: 0;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
         }
 
         .menu-item h4 {
-            font-size: 0.5rem;
-            margin: 0.04rem;
+            font-size: 0.8rem;
+            margin: 10px 0;
             font-weight: bold;
         }
 
-        .menu-item .description {
-            font-size: 0.3rem;
-            margin: 0.02rem;
-            line-height: 1.2;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: block;
-            max-width: 80px;
+        .menu-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .menu-item h4 {
+            font-size: 0.8rem;
+            margin: 10px 0;
+            font-weight: bold;
         }
 
         .menu-item p {
@@ -130,59 +130,45 @@
         }
 
         .featured-items .menu-grid {
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 3px;
         }
 
         .featured-items .menu-item {
-            padding: 0.5px;
-            margin: 0;
+            padding: 2px;
+            margin: 0.5px;
         }
 
         .featured-items .menu-item img {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
         }
 
         .featured-items .menu-item h4 {
-            font-size: 0.35rem;
-            margin: 0.05px 0;
+            font-size: 0.4rem;
+            margin: 0.0003px 0;
         }
 
-        .featured-items .menu-item .description {
-            font-size: 0.2rem;
-            margin: 0;
-            display: none;
-        }
-
-        .featured-items .menu-item .price {
-            font-size: 0.2rem;
-            margin: 0.01rem;
+        .menu-item .price {
+            font-size: 0.7rem;
+            margin: 0.0003px 0;
             color: #000;
             font-weight: bold;
         }
 
         .menu-item .sizes {
-            margin: 0.1rem 0;
-            width: 100%;
+            margin: 0.0003px 0;
         }
 
         .menu-item .size-btn {
-            padding: 0.05px 0.25px;
-            font-size: 0.32rem;
+            padding: 0.7px 3px;
+            font-size: 0.8rem;
             margin: 0.05px;
-            width: 100%;
-            max-width: 95px;
-            order: 2;
         }
 
         .menu-item .add-to-cart-btn {
-            padding: 0.04px 0.1px;
-            font-size: 0.12rem;
-            margin-top: 0;
-            width: 100%;
-            max-width: 40px;
-            order: 3;
+            padding: 0.02px 0.15px;
+            font-size: 0.13rem;
         }
 
         .menu-item .add-to-cart-btn i {
@@ -305,7 +291,7 @@
                 <div class="menu-item special">
                     <img src="بيتزا/بيتزا1.jpg" alt="بيتزا">
                     <h4>بيتزا بسطرمة كيري</h4>
-                    <p class="description">بيتزا بسطرمة</p>
+                    <p class="description">صوص بيتزا جبنه موتزريلا شرايح بسطرمه قطع كيري فلفل الوان</p>
                     <div class="pizza-sizes">
                         <button class="size-btn" data-size="medium">وسط - 160 ج.م</button>
                         <button class="size-btn" data-size="large">كبير - 200 ج.م</button>
@@ -316,7 +302,7 @@
                 <div class="menu-item special">
                     <img src="مكرونة/مكرونة.jpg" alt="مكرونة">
                     <h4>مكرونة ميكس جبن</h4>
-                    <p class="description">مكرونة جبنة</p>
+                    <p class="description">مكرونة بينا مع خلطة الجبن المميزة</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="single">عادي - 140 ج.م</button>
                     </div>
@@ -326,7 +312,7 @@
                 <div class="menu-item">
                     <img src="بيتزا/مكرونة.jpg" alt="مكرونة ميكس لحوم">
                     <h4>مكرونة ميكس لحوم</h4>
-                    <p class="description">مكرونة</p>
+                    <p class="description">مكرونا بنا وايت صوص سوسيس سدق بلدي بسطرمه لحم مفروم بلدي </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">بدون وش موتزريلا - 180 ج.م</button>
                         <button class="size-btn" data-size="with-mozz">بوش موتزريلا - 210 ج.م</button>
@@ -343,7 +329,7 @@
             <div class="menu-item">
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
                 <h4>بيتزا مارجريتا</h4>
-                <p class="description">بيتزا</p>
+                <p class="description">صوص بيتزا جبنه موتزريلا</p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 90 ج.م</button>
                     <button class="size-btn" data-size="large">كبير - 110 ج.م</button>
@@ -354,7 +340,7 @@
             <div class="menu-item">
                 <img src="بيتزا/بيتزا1.jpg" alt="بيتزا">
                 <h4>بيتزا ميكس جبن</h4>
-                <p class="description">بيتزا جبنة</p>
+                <p class="description">صوص بيتزا جبنه موتزريلا جبنه بارميزان جبنه شيدر جبنه كيري جبنه تركي </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط    150 ج.م</button>
                     <button class="size-btn" data-size="large">كبير - 180 ج.م</button>
@@ -420,7 +406,7 @@
             <div class="menu-item">
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
                 <h4>بيتزا بيمبو</h4>
-                <p class="description">بيتزا فراخ</p>
+                <p class="description">صوص بيتزا شرائح فراخ تركي مدخن زيتون فلفل الوان صوص رانش </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 135 ج.م</button>
                     <button class="size-btn" data-size="large">كبير - 160 ج.م</button>
@@ -497,7 +483,7 @@
             <div class="menu-item">
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
                 <h4>بيتزا بسطرمة كيري</h4>
-                <p class="description">بيتزا بسطرمة</p>
+                <p class="description">صوص بيتزا جبنه موتزرييلا شرائح بسطرمه قطع كيري فلفل الوان </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 160 ج.م</button>
                     <button class="size-btn" data-size="large">كبير - 200 ج.م</button>
@@ -574,7 +560,7 @@
             <div class="menu-item">
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
                 <h4>بيتزا شريمب تونة</h4>
-                <p class="description">بيتزا تونة</p>
+                <p class="description">صوص بيتزا جبنه موتزريلا قطع تونه جمبري فلفل الوان شرائح بصل زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 250 ج.م</button>
                     <button class="size-btn" data-size="large">كبير - 280 ج.م</button>
@@ -645,7 +631,7 @@
             <div class="menu-item">
                 <img src="بيتزا/مكرونة.jpg" alt="مكرونة صدق">
                 <h4>مكرونة سدق</h4>
-                <p class="description">مكرونة</p>
+                <p class="description">مكرونه بنا وايت صوص سدق بلدي </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="regular">بدون وش موتزريلا - 150 ج.م</button>
                     <button class="size-btn" data-size="with-mozz">بوش موتزريلا - 180 ج.م</button>
@@ -721,7 +707,7 @@
             <div class="menu-item special">
                     <img src="مكرونة/مكرونة.jpg" alt="مكرونة">
                     <h4>مكرونة ميكس جبن</h4>
-                    <p class="description">مكرونة جبنة</p>
+                    <p class="description">مكرونه بنا وايت صوص صوص شيدر جبنه كيري جبنه موتزريلا</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="single">عادي - 140 ج.م</button>
                     </div>
@@ -865,6 +851,7 @@
                 <div class="menu-item" data-drink="tea">
                     <img src="بيتزا/شاي.jpg" alt="شاي فلفر">
                     <h4>شاي فلفر</h4>
+                    <p class="description">شاي بنكهة الفلفر المميزة</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 35 ج.م</button>
                     </div>
@@ -944,6 +931,7 @@
                 <div class="menu-item" data-drink="hot-nutella">
                     <img src="بيتزا/هوت-نيوتيلا.jpg" alt="هوت شوكلت نيوتيلا">
                     <h4>هوت شوكلت نيوتيلا</h4>
+                    <p class="description">مشروب شوكولاتة ساخن بنكهة النيوتيلا الشهية</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55 ج.م</button>
                     </div>
@@ -1025,6 +1013,7 @@
                 <div class="menu-item" data-drink="double-espresso">
                     <img src="بيتزا/قهوة.jpg" alt="اسبريسو دابل">
                     <h4>اسبريسو دابل</h4>
+                    <p class="description">شوت مزدوج من الاسبريسو المركز</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 40 ج.م</button>
                     </div>
@@ -1104,6 +1093,7 @@
                 <div class="menu-item" data-drink="mocha">
                     <img src="بيتزا/قهوة.jpg" alt="موكا">
                     <h4>موكا</h4>
+                    <p class="description">شوت اسبريسو مع شوكولاتة ساخنة وحليب مبخر</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55 ج.م</button>
                     </div>
@@ -1126,6 +1116,7 @@
                 <div class="menu-item" data-drink="vanilla-milkshake">
                     <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك فانيليا">
                     <h4>ميلك شيك فانيليا</h4>
+                    <p class="description">ميلك شيك بنكهة الفانيليا المميزة</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 65 ج.م</button>
                     </div>
@@ -1195,6 +1186,7 @@
                 <div class="menu-item" data-drink="pina-colada-milkshake">
                     <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك بينا كولادا">
                     <h4>ميلك شيك بينا كولادا</h4>
+                    <p class="description">ميلك شيك بنكهة جوز الهند والأناناس</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 100 ج.م</button>
                     </div>
@@ -1279,6 +1271,7 @@
                 <div class="menu-item" data-drink="ice-mocha">
                     <img src="بيتزا/قهوة.jpg" alt="ايس موكا">
                     <h4>ايس موكا</h4>
+                    <p class="description">قهوة مثلجة مع شوكولاتة وحليب مخفوق</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 70 ج.م</button>
                     </div>
@@ -1321,6 +1314,7 @@
                 <div class="menu-item" data-drink="classic-mojito">
                     <img src="بيتزا/موهيتو.jpg" alt="موهيتو كلاسيك">
                     <h4>موهيتو كلاسيك</h4>
+                    <p class="description">مشروب منعش من الليمون والنعناع الطازج</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55ج.م</button>
                     </div>
@@ -1373,6 +1367,7 @@
                 <div class="menu-item" data-drink="caramel-frappe">
                     <img src="بيتزا/فرابيه.jpg" alt="فرابيه كراميل">
                     <h4>فرابيه كراميل</h4>
+                    <p class="description">مشروب مثلج مخفوق بنكهة الكراميل مع الكريمة</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 70 ج.م</button>
                     </div>
@@ -1425,6 +1420,7 @@
                 <div class="menu-item" data-drink="mango">
                     <img src="بيتزا/مانجو.jpg" alt="عصير مانجو">
                     <h4>عصير مانجو</h4>
+                    <p class="description">عصير مانجو طبيعي 100%</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55ج.م</button>
                     </div>
@@ -1616,6 +1612,7 @@
 
          <div class="menu-item">
                     <h4>فته كيندر</h4>
+                    <p class="description">اوريو ايس كريم مع ص كيندر</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 90 ج.م</button>
                     </div>
@@ -1790,6 +1787,7 @@
 
           <div class="menu-item">
                     <h4>بيريل </h4>
+                    <p class="description">بيريل </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 30 ج.م</button>
                     </div>
