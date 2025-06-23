@@ -44,48 +44,34 @@
         }
 
         .menu-grid {
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            padding: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 0.4rem;
         }
 
         .menu-item {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 0.5rem;
+        }
+
+        .menu-item img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .menu-item h4 {
+            font-size: 0.8rem;
+            margin: 0.1rem 0;
             text-align: center;
-        }
-
-        .menu-item img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-
-        .menu-item h4 {
-            font-size: 0.8rem;
-            margin: 10px 0;
-            font-weight: bold;
-        }
-
-        .menu-item img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-
-        .menu-item h4 {
-            font-size: 0.8rem;
-            margin: 10px 0;
             font-weight: bold;
         }
 
         .menu-item p {
-            font-size: 0.22rem;
-            margin: 0;
+            font-size: 0.04rem;
+            margin: 0.1rem 0;
+            text-align: center;
+            line-height: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         header {
