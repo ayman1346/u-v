@@ -19,6 +19,41 @@
             font-family: Arial, sans-serif;
         }
 
+        /* نمط النافذة المنبثقة للصور */
+        .image-modal {
+            display: block;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .image-modal-content {
+            position: relative;
+            margin: 15% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #ccc;
+        }
+
         .hero {
             padding: 0;
         }
@@ -50,6 +85,24 @@
 
         .menu-item {
             padding: 0.5rem;
+            position: relative;
+        }
+
+        .view-image-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.7rem;
+        }
+
+        .view-image-btn:hover {
+            background-color: #45a049;
         }
 
         .menu-item img {
@@ -123,16 +176,29 @@
         .featured-items .menu-item {
             padding: 2px;
             margin: 0.5px;
+            min-height: 120px; /* تقليل الارتفاع الإجمالي للمنتج */
         }
 
         .featured-items .menu-item img {
-            width: 80px;
-            height: 80px;
+            width: 70px; /* تقليل حجم الصورة */
+            height: 70px; /* تقليل ارتفاع الصورة */
         }
 
         .featured-items .menu-item h4 {
             font-size: 0.4rem;
             margin: 0.0003px 0;
+            line-height: 1.2; /* تقليل المسافة بين السطور */
+        }
+
+        .featured-items .menu-item .description {
+            font-size: 0.3rem; /* تقليل حجم الخط للوصف */
+            margin: 0.05rem 0; /* تقليل المسافة حول الوصف */
+        }
+
+        .featured-items .menu-item .size-btn {
+            font-size: 0.3rem; /* تقليل حجم الخط لأزرار الحجم */
+            padding: 0.1rem 0.3rem; /* تقليل حشوة الأزرار */
+            margin: 0.05rem 0; /* تقليل المسافة حول الأزرار */
         }
 
         .menu-item .price {
@@ -261,9 +327,11 @@
     </section>
 
         <div class="featured-items">
-            <h2>الأكثر طلباً</h2>
+            <h4>الأكثر طلباً</h4>
             <div class="menu-grid hot-drinks">
                 <div class="menu-item special">
+                    <!-- لتبديل الصورة، قم بتغيير قيمة data-image -->
+                    <button class="view-image-btn" data-image="صوره تشكن رانش.jpg" onclick="showProductImage(this.getAttribute('data-image'))">عرض الصورة</button>
                     <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
                     <h4>بيتزا تشكن رانش</h4>
                     <p class="description">صوص رانش جبنه موتزريلا شرائح فراخ فلفل الوان زيتون </p>
@@ -275,6 +343,7 @@
                     <span class="badge">الأكثر طلباً</span>
                 </div>
                 <div class="menu-item special">
+                    <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا1.jpg')">عرض الصورة</button>
                     <img src="بيتزا/بيتزا1.jpg" alt="بيتزا">
                     <h4>بيتزا بسطرمة كيري</h4>
                     <p class="description">صوص بيتزا جبنه موتزريلا شرايح بسطرمه قطع كيري فلفل الوان</p>
@@ -286,18 +355,32 @@
                     <span class="badge">الأكثر طلباً</span>
                 </div>
                 <div class="menu-item special">
+                    <button class="view-image-btn" onclick="showProductImage('مكرونة/مكرونة.jpg')">عرض الصورة</button>
                     <img src="مكرونة/مكرونة.jpg" alt="مكرونة">
-                    <h4>مكرونة ميكس جبن</h4>
+                    <h4> ميكس جبن</h4>
+                    <h4>.</h4>
+                    <h4>.</h4>
+                    <h4>.</h4>
+                    <h4>.</h4>
+                    <h4>.</h4>
+                    <h4>.</h4>
+                    <h4>.</h4>
+                    <h4>.</h4>
+                    <h4>.</h4>
                     <p class="description">مكرونة بينا مع خلطة الجبن المميزة</p>
                     <div class="sizes">
-                        <button class="size-btn" data-size="single">عادي - 140 ج.م</button>
+                        <button class="size-btn" data-size="single">السعر - 140 ج.م</button>
                     </div>
                     <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
                     <span class="badge">الأكثر طلباً</span>
                 </div>
                 <div class="menu-item">
-                    <img src="بيتزا/مكرونة.jpg" alt="مكرونة ميكس لحوم">
-                    <h4>مكرونة ميكس لحوم</h4>
+                    <button class="view-image-btn" onclick="showProductImage('بيتزا/مكرونة.jpg')">عرض الصورة</button>
+                    <img src="بيتزا/مكرونة.jpg" alt="مكرونة ">
+                    <h4> ميكس لحوم</h4>
+                    <h4>.</h4>
+                    <h4>.</h4>
+                    <h4>.</h4>
                     <p class="description">مكرونا بنا وايت صوص سوسيس سدق بلدي بسطرمه لحم مفروم بلدي </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">بدون وش موتزريلا - 180 ج.م</button>
@@ -313,8 +396,9 @@
         <h2>قائمة البيتزا</h2>
         <div class="menu-grid">
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا مارجريتا</h4>
+                <h4> مارجريتا</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا</p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 90 ج.م</button>
@@ -324,8 +408,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا1.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا1.jpg" alt="بيتزا">
-                <h4>بيتزا ميكس جبن</h4>
+                <h4> ميكس جبن</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا جبنه بارميزان جبنه شيدر جبنه كيري جبنه تركي </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط    150 ج.م</button>
@@ -335,8 +420,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا مشروم</h4>
+                <h4> مشروم</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا مشروم فلفل الوان زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 120 ج.م</button>
@@ -346,8 +432,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا تشكن</h4>
+                <h4> تشكن</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا شرائح فراخ فلفل الوان زيتون  </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 130 ج.م</button>
@@ -357,8 +444,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا تشكن رانش</h4>
+                <h4> تشكن رانش</h4>
                 <p class="description">صوص رانش جبنه موتزريلا شرائح فراخ فلفل الوان زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 150 ج.م</button>
@@ -368,8 +456,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا تشكن دوريتوس</h4>
+                <h4> تشكن دوريتوس</h4>
                 <p class="description">صوص بيتزا اسبايسي جبنه موتزريلا شرائح فراخ فلفل حار زيتون دوريتوس</p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 135 ج.م</button>
@@ -379,8 +468,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا تشكن سوبريم</h4>
+                <h4> تشكن سوبريم</h4>
                 <p class="description">صوص بيتزا بيبروني سلامي شرائح فراخ مشروم فلفل الوان زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 160 ج.م</button>
@@ -390,8 +480,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا بيمبو</h4>
+                <h4> بيمبو</h4>
                 <p class="description">صوص بيتزا شرائح فراخ تركي مدخن زيتون فلفل الوان صوص رانش </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 135 ج.م</button>
@@ -401,8 +492,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا بيبروني</h4>
+                <h4> بيبروني</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا بيبروني ميكس جبن</p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 160 ج.م</button>
@@ -412,8 +504,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا سلامي</h4>
+                <h4> سلامي</h4>
                 <p class="description">صوص جبنه موتزريلا سلامي فلفل الوان زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 150 ج.م</button>
@@ -423,8 +516,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا سموكي</h4>
+                <h4> سموكي</h4>
                 <p class="description">صوص رانش جبنه موتزريلا تركي مدخن سلامي بيف بيكون كيري </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 190 ج.م</button>
@@ -434,8 +528,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا سوبر سوبريم</h4>
+                <h4> سوبر سوبريم</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا بيبروني زيتون سلامي بيف توبنج مشروم فلفل الوان </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 165 ج.م</button>
@@ -445,8 +540,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا سوسيس</h4>
+                <h4> سوسيس</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا سوسيس فلفل الوان زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 140 ج.م</button>
@@ -456,8 +552,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا بسطرمة</h4>
+                <h4> بسطرمة</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا شرائح بسطرمه فلفل الوان </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 135 ج.م</button>
@@ -467,8 +564,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا بسطرمة كيري</h4>
+                <h4> بسطرمة كيري</h4>
                 <p class="description">صوص بيتزا جبنه موتزرييلا شرائح بسطرمه قطع كيري فلفل الوان </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 160 ج.م</button>
@@ -478,8 +576,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا سدق</h4>
+                <h4> سدق</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا سدق بلدي فلفل الوان زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 175 ج.م</button>
@@ -489,8 +588,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا سدق كيري</h4>
+                <h4> سدق كيري</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا سدق بلدي قطع كيري فلفل الوان زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 190 ج.م</button>
@@ -500,8 +600,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا مفروم</h4>
+                <h4> مفروم</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا لحم مفروم طازج فلفل الوان زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 170 ج.م</button>
@@ -511,8 +612,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا برجر</h4>
+                <h4> برجر</h4>
                 <p class="description">صوص بيتزا خيار مخلل فلفل الوان برجر لحم بلدي موتزريلا صوص بيج تيستي </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 220 ج.م</button>
@@ -522,8 +624,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا مشكل لحوم</h4>
+                <h4> ميكس لحوم</h4>
                 <p class="description">صوص جبنه موتزريلا سوسيس سدق بلدي شرائح بسطرمه لحم مفروم فلفل الوان زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 170 ج.م</button>
@@ -533,8 +636,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا تونة</h4>
+                <h4> تونة</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا قطع تونه فلفل الوان زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 190 ج.م</button>
@@ -544,8 +648,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا شريمب تونة</h4>
+                <h4> شريمب تونة</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا قطع تونه جمبري فلفل الوان شرائح بصل زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 250 ج.م</button>
@@ -555,8 +660,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا جمبري</h4>
+                <h4> جمبري</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا جمبري فلفل الوان شرائح بصل زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 210 ج.م</button>
@@ -566,8 +672,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا سي فوود</h4>
+                <h4> سي فوود</h4>
                 <p class="description">صوص بيتزا جمبري كاليماري كابوريا فلفل الوان شرائح بصل زيتون </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 190 ج.م</button>
@@ -577,8 +684,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا سي رانش</h4>
+                <h4> سي رانش</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا جمبري كاليماري كابوريا فلفل الوان شرائح بصل زيتون صزص رانش </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="medium">وسط - 210 ج.م</button>
@@ -588,23 +696,23 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا نيوتيلا</h4>
+                <h4> نيوتيلا</h4>
                 <p class="description">نيتويلا مخصوص </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 120 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 120 ج.م</button>
+                    <button class="size-btn" data-size="medium">السعر - 120 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا.jpg')">عرض الصورة</button>
                 <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                <h4>بيتزا ميكس حلو</h4>
+                <h4> ميكس حلو</h4>
                 <p class="description">ميكس نيوتيلا -ولوتس </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 130 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 130 ج.م</button>
+                    <button class="size-btn" data-size="medium">السعر - 130 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -615,8 +723,9 @@
         <h2>قائمة المكرونات</h2>
         <div class="menu-grid">
             <div class="menu-item">
-                <img src="بيتزا/مكرونة.jpg" alt="مكرونة صدق">
-                <h4>مكرونة سدق</h4>
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/مكرونة.jpg')">عرض الصورة</button>
+                <img src="بيتزا/مكرونة.jpg" alt="مكرونة ">
+                <h4> سدق</h4>
                 <p class="description">مكرونه بنا وايت صوص سدق بلدي </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="regular">بدون وش موتزريلا - 150 ج.م</button>
@@ -626,8 +735,9 @@
             </div>
 
             <div class="menu-item">
-                <img src="بيتزا/مكرونة.jpg" alt="مكرونة لحم مفروم">
-                <h4>مكرونة لحم مفروم</h4>
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/مكرونة.jpg')">عرض الصورة</button>
+                <img src="بيتزا/مكرونة.jpg" alt="مكرونة ">
+                <h4> لحم مفروم</h4>
                 <p class="description">مكرونه بنا وايت صوص لحم مفروم بلدي </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="regular">بدون وش موتزريلا - 150 ج.م</button>
@@ -637,8 +747,9 @@
             </div>
 
             <div class="menu-item">
-                <img src="بيتزا/مكرونة.jpg" alt="مكرونة سوسيس">
-                <h4>مكرونة سوسيس</h4>
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/مكرونة.jpg')">عرض الصورة</button>
+                <img src="بيتزا/مكرونة.jpg" alt="مكرونة ">
+                <h4> سوسيس</h4>
                 <p class="description">مكرونة بنا وايت صوص سوسيس </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="regular">بدون وش موتزريلا - 120 ج.م</button>
@@ -648,8 +759,9 @@
             </div>
 
             <div class="menu-item">
-                <img src="بيتزا/مكرونة.jpg" alt="مكرونة بسطرمة">
-                <h4>مكرونة بسطرمة</h4>
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/مكرونة.jpg')">عرض الصورة</button>
+                <img src="بيتزا/مكرونة.jpg" alt="مكرونة ">
+                <h4> بسطرمة</h4>
                 <p class="description">مكرونة بنا وايت صوص شرائح بسطرمه </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="regular">بدون وش موتزريلا - 135 ج.م</button>
@@ -659,8 +771,9 @@
             </div>
 
             <div class="menu-item">
-                <img src="بيتزا/مكرونة.jpg" alt="مكرونة مشكل لحوم">
-                <h4>مكرونة مشكل لحوم</h4>
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/مكرونة.jpg')">عرض الصورة</button>
+                <img src="بيتزا/مكرونة.jpg" alt="مكرونة ">
+                <h4> مشكل لحوم</h4>
                 <p class="description">مكرونة بنا وايت صوص سوسيس سدق بلدي بسطرمه لحم مفروم بلدي </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="regular">بدون وش موتزريلا - 180 ج.م</button>
@@ -669,8 +782,9 @@
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
             <div class="menu-item">
-                <img src="بيتزا/مكرونة.jpg" alt="مكرونة جمبري">
-                <h4>مكرونة جمبري</h4>
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/مكرونة.jpg')">عرض الصورة</button>
+                <img src="بيتزا/مكرونة.jpg" alt="مكرونة ">
+                <h4> جمبري</h4>
                 <p class="description">مكرونة بنا وايت صوص جمبري </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="regular">بدون وش موتزريلا - 200 ج.م</button>
@@ -680,8 +794,9 @@
             </div>
 
             <div class="menu-item">
-                <img src="بيتزا/مكرونة.jpg" alt="مكرونة سي فوود">
-                <h4>مكرونة سي فوود</h4>
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/مكرونة.jpg')">عرض الصورة</button>
+                <img src="بيتزا/مكرونة.jpg" alt="مكرونة ">
+                <h4> سي فوود</h4>
                 <p class="description">مكرونه بنا وايت صوص جمبري كاليماري كابوريا </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="regular">بدون وش موتزريلا - 220 ج.م</button>
@@ -690,20 +805,23 @@
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
 
-            <div class="menu-item special">
+            <div class="menu-item">
+                    <button class="view-image-btn" onclick="showProductImage('مكرونة/مكرونة.jpg')">عرض الصورة</button>
                     <img src="مكرونة/مكرونة.jpg" alt="مكرونة">
-                    <h4>مكرونة ميكس جبن</h4>
+                    <h4> ميكس جبن</h4>
+                    <h4>.</h4>
+                    <h4>.</h4>
                     <p class="description">مكرونه بنا وايت صوص صوص شيدر جبنه كيري جبنه موتزريلا</p>
                     <div class="sizes">
-                        <button class="size-btn" data-size="single">عادي - 140 ج.م</button>
+                        <button class="size-btn" data-size="single">السعر - 140 ج.م</button>
                     </div>
                     <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
-                    <span class="badge">الأكثر طلباً</span>
                 </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/مكرونة.jpg')">عرض الصورة</button>
                 <img src="بيتزا/مكرونة.jpg" alt="مكرونة">
-                <h4>مكرونة الفريدو</h4>
+                <h4> الفريدو</h4>
                 <p class="description">مكرونة بنا وايت صوص شرائح فراخ مشروم جبنه بارميزان </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="single">السعر - 135 ج.م</button>
@@ -712,8 +830,9 @@
             </div>
 
             <div class="menu-item">
+                <button class="view-image-btn" onclick="showProductImage('بيتزا/مكرونة.jpg')">عرض الصورة</button>
                 <img src="بيتزا/مكرونة.jpg" alt="مكرونة">
-                <h4>مكرونة نجرسكو</h4>
+                <h4> نجرسكو</h4>
                 <p class="description">مكرونه بنا وايت صوص شرائح فراخ مشروم جبنه موتزريلا </p>
                 <div class="sizes">
                     <button class="size-btn" data-size="single">السعر - 150 ج.م</button>
@@ -728,30 +847,27 @@
         <div class="menu-grid">
             <div class="menu-item">
                 <img src="بيتزا/فرايز.jpg" alt="فرايز">
-                <h4>فرايز</h4>
-                <p class="description">بطاطس </p>
+                <h4>....</h4>
                 <div class="sizes">
-                    <button class="size-btn" data-size="regular">عادي - 50 ج.م</button>
+                    <button class="size-btn" data-size="regular">السعر - 50 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
 
             <div class="menu-item">
                 <img src="بيتزا/فرايز.jpg" alt="تشيزي فرايز">
-                <h4>تشيزي فرايز</h4>
-                <p class="description">بطاطس-صوص الجبنة</p>
+                <h4>....</h4>
                 <div class="sizes">
-                    <button class="size-btn" data-size="regular">عادي - 60 ج.م</button>
+                    <button class="size-btn" data-size="regular">السعر - 60 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
 
             <div class="menu-item">
                 <img src="بيتزا/فرايز.jpg" alt="هالبينو فرايز">
-                <h4>هالبينو فرايز</h4>
-                <p class="description">بطاطس- صوص شيدر -قطع هالبينو </p>
+                <h4>....</h4>
                 <div class="sizes">
-                    <button class="size-btn" data-size="regular">عادي - 70 ج.م</button>
+                    <button class="size-btn" data-size="regular">السعر - 70 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -760,55 +876,55 @@
         <h3 class="sub-section-title">الصوصات</h3>
         <div class="menu-grid sauces-grid">
             <div class="menu-item sauce-item">
-                <img src="بيتزا/صوص.jpg" alt="صوص بيج تيستي">
-                <h4>صوص بيج تيستي</h4>
+                <img src="بيتزا/صوص.jpg" alt="صوص ">
+                <h4> بيج تيستي</h4>
                 <div class="sizes">
-                    <button class="size-btn" data-size="regular">عادي - 20 ج.م</button>
+                    <button class="size-btn" data-size="regular">السعر - 20 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
 
             <div class="menu-item sauce-item">
-                <img src="بيتزا/صوص.jpg" alt="صوص رانش">
-                <h4>صوص رانش</h4>
+                <img src="بيتزا/صوص.jpg" alt="صوص ">
+                <h4> رانش</h4>
                 <div class="sizes">
-                    <button class="size-btn" data-size="regular">عادي - 20 ج.م</button>
+                    <button class="size-btn" data-size="regular">السعر - 20 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
 
             <div class="menu-item sauce-item">
-                <img src="بيتزا/صوص.jpg" alt="صوص باربكيو">
-                <h4>صوص باربكيو</h4>
+                <img src="بيتزا/صوص.jpg" alt="صوص ">
+                <h4> باربكيو</h4>
                 <div class="sizes">
-                    <button class="size-btn" data-size="regular">عادي - 15 ج.م</button>
+                    <button class="size-btn" data-size="regular">السعر - 15 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
 
             <div class="menu-item sauce-item">
-                <img src="بيتزا/صوص.jpg" alt="صوص شيدر">
-                <h4>صوص شيدر</h4>
+                <img src="بيتزا/صوص.jpg" alt="صوص ">
+                <h4> شيدر</h4>
                 <div class="sizes">
-                    <button class="size-btn" data-size="regular">عادي - 20 ج.م</button>
+                    <button class="size-btn" data-size="regular">السعر - 20 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
 
             <div class="menu-item sauce-item">
-                <img src="بيتزا/صوص.jpg" alt="صوص سويت شيلي">
-                <h4>صوص سويت شيلي</h4>
+                <img src="بيتزا/صوص.jpg" alt="صوص ">
+                <h4> سويت شيلي</h4>
                 <div class="sizes">
-                    <button class="size-btn" data-size="regular">عادي - 15 ج.م</button>
+                    <button class="size-btn" data-size="regular">السعر - 15 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
 
             <div class="menu-item sauce-item">
-                <img src="بيتزا/صوص.jpg" alt="صوص حار">
-                <h4>صوص حار</h4>
+                <img src="بيتزا/صوص.jpg" alt="صوص ">
+                <h4> حار</h4>
                 <div class="sizes">
-                    <button class="size-btn" data-size="regular">عادي - 15 ج.م</button>
+                    <button class="size-btn" data-size="regular">السعر - 15 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -817,8 +933,7 @@
         <h3 class="sub-section-title">الإضافات</h3>
         <div class="menu-grid additions-grid">
             <div class="menu-item addition-item">
-                <img src="بيتزا/موتزريلا.jpg" alt="إضافة جبنة موتزريلا">
-                <h4>إضافة جبنة موتزريلا</h4>
+                <img src="بيتزا/موتزريلا.jpg" alt="إضافة">
                 <p class="description">إضافة جبنة موتزريلا إضافية لأي طبق</p>
                 <div class="sizes">
                     <button class="size-btn" data-size="regular">السعر - 30 ج.م</button>
@@ -835,9 +950,8 @@
             <h3 class="drinks-section-title">المشروبات الساخنة</h3>
             <div class="menu-grid">
                 <div class="menu-item" data-drink="tea">
-                    <img src="بيتزا/شاي.jpg" alt="شاي فلفر">
-                    <h4>شاي فلفر</h4>
-                    <p class="description">شاي بنكهة الفلفر المميزة</p>
+                    <img src="بيتزا/شاي.jpg" alt="شاي ">
+                    <h4> فلفر</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 35 ج.م</button>
                     </div>
@@ -845,9 +959,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="green-tea">
-                    <img src="بيتزا/شاي.jpg" alt="شاي اخضر">
-                    <h4>شاي اخضر</h4>
-                    <p class="description">شاي اخضر صحي ومنعش</p>
+                    <img src="بيتزا/شاي.jpg" alt="شاي ">
+                    <h4> اخضر</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 25 ج.م</button>
                     </div>
@@ -856,8 +969,7 @@
 
                 <div class="menu-item">
                     <img src="بيتزا/شاي.jpg" alt="شاي">
-                    <h4>شاي</h4>
-                    <p class="description">شاي ساخن وطازج</p>
+                    <h4>....</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 22 ج.م</button>
                     </div>
@@ -866,8 +978,7 @@
 
                 <div class="menu-item" data-drink="herbs">
                     <img src="بيتزا/اعشاب.jpg" alt="اعشاب">
-                    <h4>اعشاب</h4>
-                    <p class="description">شاي اعشاب طبيعي منعش</p>
+                    <h4>ينسون</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 30 ج.م</button>
                     </div>
@@ -876,8 +987,7 @@
 
                 <div class="menu-item" data-drink="herbs-mix">
                     <img src="بيتزا/ميكس-اعشاب.jpg" alt="ميكس اعشاب">
-                    <h4>ميكس اعشاب</h4>
-                    <p class="description">تشكيلة مميزة من الاعشاب الطبيعية</p>
+                    <h4>ينسون قرفه عسل نعناع</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 45 ج.م</button>
                     </div>
@@ -885,9 +995,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="hot-cider">
-                    <img src="بيتزا/هوت-سيدر.jpg" alt="هوت سيدر">
-                    <h4>هوت سيدر</h4>
-                    <p class="description">مشروب ساخن بنكهة التفاح والقرفة</p>
+                    <img src="بيتزا/هوت-سيدر.jpg" alt="هوت ">
+                    <h4> سيدر</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 51 ج.م</button>
                     </div>
@@ -895,9 +1004,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="hot-oreo">
-                    <img src="بيتزا/هوت-اوريو.jpg" alt="هوت اوريو">
-                    <h4>هوت اوريو</h4>
-                    <p class="description">مشروب شوكولاتة ساخن بنكهة الاوريو</p>
+                    <img src="بيتزا/هوت-اوريو.jpg" alt="هوت ">
+                    <h4> اوريو</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 50 ج.م</button>
                     </div>
@@ -905,9 +1013,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="hot-lotus">
-                    <img src="بيتزا/هوت-لوتس.jpg" alt="هوت لوتس">
-                    <h4>هوت لوتس</h4>
-                    <p class="description">مشروب ساخن بنكهة اللوتس المميزة</p>
+                    <img src="بيتزا/هوت-لوتس.jpg" alt="هوت ">
+                    <h4> لوتس</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 50 ج.م</button>
                     </div>
@@ -915,9 +1022,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="hot-nutella">
-                    <img src="بيتزا/هوت-نيوتيلا.jpg" alt="هوت شوكلت نيوتيلا">
-                    <h4>هوت شوكلت نيوتيلا</h4>
-                    <p class="description">مشروب شوكولاتة ساخن بنكهة النيوتيلا الشهية</p>
+                    <img src="بيتزا/هوت-نيوتيلا.jpg" alt="هوت ">
+                    <h4> شوكلت نيوتيلا</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55 ج.م</button>
                     </div>
@@ -925,9 +1031,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="hot-chocolate-marshmallow">
-                    <img src="بيتزا/هوت-تشوكليت.jpg" alt="هوت شوكلت مارشميلو">
-                    <h4>هوت شوكلت مارشميلو</h4>
-                    <p class="description">شوكولاتة ساخنة مع المارشميلو الذائب</p>
+                    <img src="بيتزا/هوت-تشوكليت.jpg" alt="هوت ">
+                    <h4> شوكلت مارشميلو</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55 ج.م</button>
                     </div>
@@ -939,7 +1044,6 @@
                 <div class="menu-item">
                     <img src="بيتزا/قهوة.jpg" alt="قهوة">
                     <h4>قهوة</h4>
-                    <p class="description">قهوة تركي</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 25 ج.م</button>
                     </div>
@@ -947,9 +1051,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="hazelnut-coffee">
-                    <img src="بيتزا/قهوة.jpg" alt="قهوة بندق">
-                    <h4>قهوة بندق</h4>
-                    <p class="description">قهوة بنكهة البندق </p>
+                    <img src="بيتزا/قهوة.jpg" alt="قهوة ">
+                    <h4> بندق</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 40 ج.م</button>
                     </div>
@@ -957,9 +1060,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="french-coffee">
-                    <img src="بيتزا/قهوة.jpg" alt="قهوة فرنساوي">
-                    <h4>قهوة فرنساوي</h4>
-                    <p class="description">قهوة فرنسية</p>
+                    <img src="بيتزا/قهوة.jpg" alt="قهوة ">
+                    <h4> فرنساوي</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 40 ج.م</button>
                     </div>
@@ -967,9 +1069,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="caramel-coffee">
-                    <img src="بيتزا/قهوة.jpg" alt="قهوة كاراميل">
-                    <h4>قهوة كاراميل</h4>
-                    <p class="description">قهوة بنكهة الكاراميل </p>
+                    <img src="بيتزا/قهوة.jpg" alt="قهوة ">
+                    <h4> كاراميل</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 40 ج.م</button>
                     </div>
@@ -977,9 +1078,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="nutella-coffee">
-                    <img src="بيتزا/قهوة.jpg" alt="قهوة نيوتيلا">
-                    <h4>قهوة نيوتيلا</h4>
-                    <p class="description">قهوة ب النيوتيلا </p>
+                    <img src="بيتزا/قهوة.jpg" alt="قهوة ">
+                    <h4> نيوتيلا</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 45 ج.م</button>
                     </div>
@@ -987,9 +1087,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="single-espresso">
-                    <img src="بيتزا/قهوة.jpg" alt="اسبريسو سنجل">
-                    <h4>اسبريسو سنجل</h4>
-                    <p class="description">شوت اسبريسو مركز </p>
+                    <img src="بيتزا/قهوة.jpg" alt="اسبريسو ">
+                    <h4> سنجل</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 30 ج.م</button>
                     </div>
@@ -997,9 +1096,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="double-espresso">
-                    <img src="بيتزا/قهوة.jpg" alt="اسبريسو دابل">
-                    <h4>اسبريسو دابل</h4>
-                    <p class="description">شوت مزدوج من الاسبريسو المركز</p>
+                    <img src="بيتزا/قهوة.jpg" alt="اسبريسو ">
+                    <h4> دابل</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 40 ج.م</button>
                     </div>
@@ -1007,9 +1105,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="single-macchiato">
-                    <img src="بيتزا/قهوة.jpg" alt="ميكاتو سنجل">
-                    <h4>ميكاتو سنجل</h4>
-                    <p class="description">شوت اسبريسو مع رغوة حليب خفيفة</p>
+                    <img src="بيتزا/قهوة.jpg" alt="ميكاتو ">
+                    <h4> سنجل</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 35 ج.م</button>
                     </div>
@@ -1017,9 +1114,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="double-macchiato">
-                    <img src="بيتزا/قهوة.jpg" alt="ميكاتو دابل">
-                    <h4>ميكاتو دابل</h4>
-                    <p class="description">شوت مزدوج من الاسبريسو مع رغوة حليب</p>
+                    <img src="بيتزا/قهوة.jpg" alt="ميكاتو ">
+                    <h4> دابل</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 45 ج.م</button>
                     </div>
@@ -1028,8 +1124,7 @@
 
                 <div class="menu-item" data-drink="flat-white">
                     <img src="بيتزا/قهوة.jpg" alt="فلات وايت">
-                    <h4>فلات وايت</h4>
-                    <p class="description">شوت دابل اسبريسو مع حليب مبخر كريمي</p>
+                    <h4>.......</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 65 ج.م</button>
                     </div>
@@ -1038,8 +1133,7 @@
 
                 <div class="menu-item" data-drink="latte">
                     <img src="بيتزا/قهوة.jpg" alt="لاتيه">
-                    <h4>لاتيه</h4>
-                    <p class="description">شوت اسبريسو مع حليب مبخر ورغوة كريمية</p>
+                    <h4>....</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 45 ج.م</button>
                     </div>
@@ -1048,8 +1142,7 @@
 
                 <div class="menu-item" data-drink="cappuccino">
                     <img src="بيتزا/قهوة.jpg" alt="كابتشينو">
-                    <h4>كابتشينو</h4>
-                    <p class="description">شوت اسبريسو مع حليب مبخر ورغوة كثيفة</p>
+                    <h4>....</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 60 ج.م</button>
                     </div>
@@ -1057,9 +1150,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="american-coffee">
-                    <img src="بيتزا/قهوة.jpg" alt="امريكان كوفي">
-                    <h4>امريكان كوفي</h4>
-                    <p class="description">قهوة امريكية مخففة بالماء الساخن</p>
+                    <img src="بيتزا/قهوة.jpg" alt="امريكان ">
+                    <h4> كوفي</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 40 ج.م</button>
                     </div>
@@ -1068,8 +1160,7 @@
 
                 <div class="menu-item" data-drink="nescafe">
                     <img src="بيتزا/قهوة.jpg" alt="نسكافيه">
-                    <h4>نسكافيه</h4>
-                    <p class="description">قهوة سريعة التحضير بنكهة غنية</p>
+                    <h4>....</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 45 ج.م</button>
                     </div>
@@ -1077,9 +1168,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="mocha">
-                    <img src="بيتزا/قهوة.jpg" alt="موكا">
+                    <img src="بيتزا/قهوة.jpg" alt="هوت">
                     <h4>موكا</h4>
-                    <p class="description">شوت اسبريسو مع شوكولاتة ساخنة وحليب مبخر</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55 ج.م</button>
                     </div>
@@ -1087,9 +1177,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="white-mocha">
-                    <img src="بيتزا/قهوة.jpg" alt="وايت موكا">
-                    <h4>وايت موكا</h4>
-                    <p class="description">شوت اسبريسو مع شوكولاتة بيضاء وحليب مبخر</p>
+                    <img src="بيتزا/قهوة.jpg" alt="وايت ">
+                    <h4> موكا</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 65 ج.م</button>
                     </div>
@@ -1100,9 +1189,9 @@
             <h3 class="drinks-section-title">الميلك شيك</h3>
             <div class="menu-grid">
                 <div class="menu-item" data-drink="vanilla-milkshake">
-                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك فانيليا">
-                    <h4>ميلك شيك فانيليا</h4>
-                    <p class="description">ميلك شيك بنكهة الفانيليا المميزة</p>
+                    <button class="view-image-btn" data-image="بيتزا/ميلك-شيك.jpg" onclick="showProductImage(this.getAttribute('data-image'))">عرض الصورة</button>
+                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك ">
+                    <h4> فانيليا</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 65 ج.م</button>
                     </div>
@@ -1110,9 +1199,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="chocolate-milkshake">
-                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك شوكلت">
-                    <h4>ميلك شيك شوكلت</h4>
-                    <p class="description">ميلك شيك بالشوكولاتة الغنية</p>
+                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك">
+                    <h4> شوكلت</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 65 ج.م</button>
                     </div>
@@ -1120,9 +1208,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="mango-milkshake">
-                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك مانجو">
-                    <h4>ميلك شيك مانجو</h4>
-                    <p class="description">ميلك شيك بنكهة المانجو الطازجة</p>
+                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك ">
+                    <h4> مانجو</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 65 ج.م</button>
                     </div>
@@ -1130,9 +1217,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="caramel-milkshake">
-                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك كراميل">
-                    <h4>ميلك شيك كراميل</h4>
-                    <p class="description">ميلك شيك بصوص الكراميل اللذيذ</p>
+                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك">
+                    <h4> كراميل</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 70 ج.م</button>
                     </div>
@@ -1140,9 +1226,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="oreo-milkshake">
-                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك اوريو">
-                    <h4>ميلك شيك اوريو</h4>
-                    <p class="description">ميلك شيك مع قطع الاوريو المطحونة</p>
+                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك ">
+                    <h4> اوريو</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 75 ج.م</button>
                     </div>
@@ -1150,9 +1235,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="kinder-milkshake">
-                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك كيندر">
-                    <h4>ميلك شيك كيندر</h4>
-                    <p class="description">ميلك شيك بنكهة شوكولاتة الكيندر</p>
+                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك ">
+                    <h4> كيندر</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 75 ج.م</button>
                     </div>
@@ -1160,9 +1244,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="pistachio-milkshake">
-                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك بستاشيو">
-                    <h4>ميلك شيك بستاشيو</h4>
-                    <p class="description">ميلك شيك بنكهة البستاشيو الفاخرة</p>
+                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك ">
+                    <h4> بستاشيو</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 110 ج.م</button>
                     </div>
@@ -1170,9 +1253,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="pina-colada-milkshake">
-                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك بينا كولادا">
-                    <h4>ميلك شيك بينا كولادا</h4>
-                    <p class="description">ميلك شيك بنكهة جوز الهند والأناناس</p>
+                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك شيك ">
+                    <h4> بينا كولادا</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 100 ج.م</button>
                     </div>
@@ -1180,7 +1262,7 @@
                 </div>
 
                 <div class="menu-item" data-drink="custom-milkshake">
-                    <img src="بيتزا/ميلك-شيك.jpg" alt="اي طعم تحبه">
+                    <img src="بيتزا/ميلك-شيك.jpg" alt="ميلك-شيك">
                     <h4>اي طعم تحبه</h4>
                     <p class="description">اختار الطعم المفضل لديك من النكهات المتوفرة</p>
                     <div class="custom-flavor">
@@ -1198,7 +1280,7 @@
              <div class="menu-item" data-drink="custom-milkshake">
                     <img src="بيتزا/ميلك-شيك.jpg" alt="اي طعم تحبه">
                     <h4>اي طعم تحبه في السموزي</h4>
-                    <p class="description">اختار الطعم المفضل لديك من النكهات المتوفرة</p>
+                    <p class="description">اختار الطعم الي يتحبو </p>
                     <div class="custom-flavor">
                         <input type="text" class="flavor-input" placeholder="اكتب الطعم المطلوب" maxlength="30">
                     </div>
@@ -1212,41 +1294,37 @@
             <h3 class="drinks-section-title">الزبادي</h3>
             <div class="menu-grid">
                 <div class="menu-item" data-drink="plain-yogurt">
-                    <img src="بيتزا/زبادي.jpg" alt="زبادي سادة">
-                    <h4>زبادي سادة</h4>
-                    <p class="description">زبادي طازج</p>
+                    <img src="بيتزا/زبادي.jpg" alt="زبادي ">
+                    <h4> سادة</h4>
                     <div class="sizes">
-                        <button class="size-btn" data-size="regular">عادي - 45 ج.م</button>
+                        <button class="size-btn" data-size="regular">السعر - 45 ج.م</button>
                     </div>
                     <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
                 </div>
 
                 <div class="menu-item" data-drink="fruit-yogurt">
-                    <img src="بيتزا/زبادي.jpg" alt="زبادي بالفواكه">
-                    <h4>زبادي فواكه</h4>
-                    <p class="description">زبادي مع تشكيلة فواكه طازجة</p>
+                    <img src="بيتزا/زبادي.jpg" alt="زبادي ">
+                    <h4> فواكه</h4>
                     <div class="sizes">
-                        <button class="size-btn" data-size="regular">عادي - 65 ج.م</button>
+                        <button class="size-btn" data-size="regular">السعر - 65 ج.م</button>
                     </div>
                     <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
                 </div>
 
                 <div class="menu-item" data-drink="honey-yogurt">
-                    <img src="بيتزا/زبادي.jpg" alt="زبادي بالعسل">
-                    <h4>زبادي عسل</h4>
-                    <p class="description">زبادي مع عسل نحل طبيعي</p>
+                    <img src="بيتزا/زبادي.jpg" alt="زبادي ">
+                    <h4> عسل</h4>
                     <div class="sizes">
-                        <button class="size-btn" data-size="regular">عادي - 60 ج.م</button>
+                        <button class="size-btn" data-size="regular">السعر - 60 ج.م</button>
                     </div>
                     <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
                 </div>
 
                 <div class="menu-item" data-drink="flavored-yogurt">
-                    <img src="بيتزا/زبادي.jpg" alt="زبادي فلفر">
-                    <h4>زبادي فلفر</h4>
-                    <p class="description">زبادي بنكهات مختلفة</p>
+                    <img src="بيتزا/زبادي.jpg" alt="زبادي ">
+                    <h4> فلفر</h4>
                     <div class="sizes">
-                        <button class="size-btn" data-size="regular">عادي - 60 ج.م</button>
+                        <button class="size-btn" data-size="regular">السعر - 60 ج.م</button>
                     </div>
                     <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
                 </div>
@@ -1255,9 +1333,8 @@
             <h3 class="drinks-section-title">ايس موكا</h3>
             <div class="menu-grid">
                 <div class="menu-item" data-drink="ice-mocha">
-                    <img src="بيتزا/قهوة.jpg" alt="ايس موكا">
-                    <h4>ايس موكا</h4>
-                    <p class="description">قهوة مثلجة مع شوكولاتة وحليب مخفوق</p>
+                    <img src="بيتزا/قهوة.jpg" alt="ايس ">
+                    <h4> موكا</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 70 ج.م</button>
                     </div>
@@ -1265,9 +1342,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="ice-latte">
-                    <img src="بيتزا/قهوة.jpg" alt="ايس لاتيه">
-                    <h4>ايس لاتيه</h4>
-                    <p class="description">قهوة مثلجة مع حليب مخفوق ورغوة كريمية</p>
+                    <img src="بيتزا/قهوة.jpg" alt="ايس ">
+                    <h4> لاتيه</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 60ج.م</button>
                     </div>
@@ -1275,9 +1351,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="ice-caramel">
-                    <img src="بيتزا/قهوة.jpg" alt="ايس كراميل">
-                    <h4>ايس كراميل</h4>
-                    <p class="description">قهوة مثلجة مع صوص الكراميل وحليب مخفوق</p>
+                    <img src="بيتزا/قهوة.jpg" alt="ايس ">
+                    <h4> كراميل</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 70ج.م</button>
                     </div>
@@ -1285,9 +1360,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="spanish-latte">
-                    <img src="بيتزا/قهوة.jpg" alt="ايس اسبانش لاتيه">
-                    <h4>ايس اسبانش لاتيه</h4>
-                    <p class="description">قهوة مثلجة بالحليب المكثف المحلى والحليب المخفوق</p>
+                    <img src="بيتزا/قهوة.jpg" alt="ايس ">
+                    <h4> اسبانش لاتيه</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 70ج.م</button>
                     </div>
@@ -1298,9 +1372,8 @@
             <h3 class="drinks-section-title">موهيتو</h3>
             <div class="menu-grid">
                 <div class="menu-item" data-drink="classic-mojito">
-                    <img src="بيتزا/موهيتو.jpg" alt="موهيتو كلاسيك">
-                    <h4>موهيتو كلاسيك</h4>
-                    <p class="description">مشروب منعش من الليمون والنعناع الطازج</p>
+                    <img src="بيتزا/موهيتو.jpg" alt="موهيتو ">
+                    <h4> كلاسيك</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55ج.م</button>
                     </div>
@@ -1308,9 +1381,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="flavored-mojito">
-                    <img src="بيتزا/موهيتو.jpg" alt="موهيتو فلفر">
-                    <h4>موهيتو فلفر</h4>
-                    <p class="description">موهيتو بنكهة اختيارك (فراولة، توت، خوخ، باشن)</p>
+                    <img src="بيتزا/موهيتو.jpg" alt="موهيتو ">
+                    <h4> فلفر</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 65ج.م</button>
                     </div>
@@ -1319,8 +1391,7 @@
 
                 <div class="menu-item" data-drink="sunshine">
                     <img src="بيتزا/موهيتو.jpg" alt="صن شاين">
-                    <h4>صن شاين</h4>
-                    <p class="description">مزيج منعش من البرتقال والأناناس مع النعناع</p>
+                    <h4>....</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 60ج.م</button>
                     </div>
@@ -1328,9 +1399,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="redbull-flavor">
-                    <img src="بيتزا/موهيتو.jpg" alt="ريدبول فلفر">
-                    <h4>ريدبول فلفر</h4>
-                    <p class="description">ريدبول منعش مع نكهة اختيارك</p>
+                    <img src="بيتزا/موهيتو.jpg" alt="ريدبول ">
+                    <h4> فلفر</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 80ج.م</button>
                     </div>
@@ -1339,8 +1409,7 @@
 
                 <div class="menu-item" data-drink="blue-sky">
                     <img src="بيتزا/موهيتو.jpg" alt="بلو سكاي">
-                    <h4>بلو سكاي</h4>
-                    <p class="description">مشروب منعش باللون الأزرق مع الليمون والنعناع</p>
+                    <h4>....</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 70ج.م</button>
                     </div>
@@ -1351,9 +1420,8 @@
             <h3 class="drinks-section-title">فرابيه</h3>
             <div class="menu-grid">
                 <div class="menu-item" data-drink="caramel-frappe">
-                    <img src="بيتزا/فرابيه.jpg" alt="فرابيه كراميل">
-                    <h4>فرابيه كراميل</h4>
-                    <p class="description">مشروب مثلج مخفوق بنكهة الكراميل مع الكريمة</p>
+                    <img src="بيتزا/فرابيه.jpg" alt="فرابيه ">
+                    <h4> كراميل</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 70 ج.م</button>
                     </div>
@@ -1361,9 +1429,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="nutella-frappe">
-                    <img src="بيتزا/فرابيه.jpg" alt="فرابيه نيوتيلا">
-                    <h4>فرابيه نيوتيلا</h4>
-                    <p class="description">مشروب مثلج مخفوق بنكهة النيوتيلا مع الكريمة</p>
+                    <img src="بيتزا/فرابيه.jpg" alt="فرابيه ">
+                    <h4> نيوتيلا</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 75ج.م</button>
                     </div>
@@ -1371,9 +1438,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="oreo-frappe">
-                    <img src="بيتزا/فرابيه.jpg" alt="فرابيه اوريو">
-                    <h4>فرابيه اوريو</h4>
-                    <p class="description">مشروب مثلج مخفوق بقطع الاوريو والكريمة</p>
+                    <img src="بيتزا/فرابيه.jpg" alt="فرابيه ">
+                    <h4> اوريو</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 70ج.م</button>
                     </div>
@@ -1381,9 +1447,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="mocha-frappe">
-                    <img src="بيتزا/فرابيه.jpg" alt="فرابيه موكا">
-                    <h4>فرابيه موكا</h4>
-                    <p class="description">مشروب مثلج مخفوق بالقهوة والشوكولاتة والكريمة</p>
+                    <img src="بيتزا/فرابيه.jpg" alt="فرابيه ">
+                    <h4> موكا</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 70ج.م</button>
                     </div>
@@ -1391,9 +1456,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="lotus-frappe">
-                    <img src="بيتزا/فرابيه.jpg" alt="فرابيه لوتس">
-                    <h4>فرابيه لوتس</h4>
-                    <p class="description">مشروب مثلج مخفوق بنكهة اللوتس مع الكريمة</p>
+                    <img src="بيتزا/فرابيه.jpg" alt="فرابيه ">
+                    <h4> لوتس</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 75ج.م</button>
                     </div>
@@ -1404,9 +1468,8 @@
             <h3 class="drinks-section-title">الفريشات</h3>
             <div class="menu-grid">
                 <div class="menu-item" data-drink="mango">
-                    <img src="بيتزا/مانجو.jpg" alt="عصير مانجو">
-                    <h4>عصير مانجو</h4>
-                    <p class="description">عصير مانجو طبيعي 100%</p>
+                    <img src="بيتزا/مانجو.jpg" alt="فريش">
+                    <h4> مانجو</h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 55ج.م</button>
                     </div>
@@ -1414,9 +1477,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="strawberry">
-                    <img src="بيتزا/فراولة.jpg" alt="عصير فراولة">
+                    <img src="بيتزا/فراولة.jpg" alt="فريش">
                     <h4> فراولة</h4>
-                    <p class="description">عصير فراولة طازج </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر -  50ج.م</button>
                     </div>
@@ -1424,9 +1486,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="milkshake-vanilla">
-                    <img src="بيتزا/ميلك-شيك-فانيليا.jpg" alt="فراوله حليب ">
+                    <img src="بيتزا/ميلك-شيك-فانيليا.jpg" alt="فريش">
                     <h4>فراوله حليب</h4>
-                    <p class="description">فراوله طازجة مع الحليب </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 65 ج.م</button>
                     </div>
@@ -1434,9 +1495,8 @@
                 </div>
 
                 <div class="menu-item" data-drink="lemonade">
-                    <img src="بيتزا/ليموناضة.jpg" alt="ليمون">
+                    <img src="بيتزا/ليموناضة.jpg" alt="فريش">
                     <h4>ليمون</h4>
-                    <p class="description">ليمون طازج </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 45 ج.م</button>
                     </div>
@@ -1445,11 +1505,10 @@
             </div>
             
             <div class="menu-item">
-                <img src="مشروبات/ليمون-نعناع.jpg" alt="ليمون نعناع">
+                <img src="مشروبات/ليمون-نعناع.jpg" alt="فريش">
                 <h4>ليمون نعناع</h4>
-                <p class="description">عصير ليمون طازج مع النعناع المنعش</p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="regular">عادي - 55 ج.م</button>
+                    <button class="size-btn" data-size="regular">السعر - 55 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn">
                     <i class="fas fa-cart-plus"></i> أضف للسلة
@@ -1458,11 +1517,10 @@
         </div>
 
          <div class="menu-item">
-                <img src="مشروبات/ليمون-نعناع.jpg" alt="موز">
+                <img src="مشروبات/ليمون-نعناع.jpg" alt="فريش">
                 <h4>موز </h4>
-                <p class="description">موز فريش مع الحليب </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="regular">عادي - 60 ج.م</button>
+                    <button class="size-btn" data-size="regular">السعر - 60 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn">
                     <i class="fas fa-cart-plus"></i> أضف للسلة
@@ -1471,9 +1529,8 @@
         </div>
 
          <div class="menu-item" data-drink="lemonade">
-                    <img src="بيتزا/ليموناضة.jpg" alt="بلح">
+                    <img src="بيتزا/ليموناضة.jpg" alt="فريش">
                     <h4>بلح</h4>
-                    <p class="description">بلح مع حليب </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 60 ج.م</button>
                     </div>
@@ -1482,9 +1539,8 @@
             </div>
 
              <div class="menu-item" data-drink="lemonade">
-                    <img src="بيتزا/ليموناضة.jpg" alt="ليمون">
+                    <img src="بيتزا/ليموناضة.jpg" alt="فريش">
                     <h4>رمان</h4>
-                    <p class="description">رمان فريش </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 50 ج.م</button>
                     </div>
@@ -1493,9 +1549,8 @@
             </div>
 
              <div class="menu-item" data-drink="lemonade">
-                    <img src="بيتزا/ليموناضة.jpg" alt="ليمون">
+                    <img src="بيتزا/ليموناضة.jpg" alt="فريش">
                     <h4>كيوي</h4>
-                    <p class="description">كيوي فريش</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 90 ج.م</button>
                     </div>
@@ -1504,9 +1559,8 @@
             </div>
 
              <div class="menu-item" data-drink="lemonade">
-                    <img src="بيتزا/ليموناضة.jpg" alt="ليمون">
+                    <img src="بيتزا/ليموناضة.jpg" alt="فريش">
                     <h4>بطيخ</h4>
-                    <p class="description">بطيخ فريش</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 50 ج.م</button>
                     </div>
@@ -1515,9 +1569,8 @@
             </div>
 
              <div class="menu-item" data-drink="lemonade">
-                    <img src="بيتزا/ليموناضة.jpg" alt="ليمون">
+                    <img src="بيتزا/ليموناضة.jpg" alt="فريش">
                     <h4>جوافه</h4>
-                    <p class="description">جوافه فريش</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 50 ج.م</button>
                     </div>
@@ -1526,9 +1579,8 @@
             </div>
 
             <div class="menu-item" data-drink="lemonade">
-                    <img src="بيتزا/ليموناضة.jpg" alt="ليمون">
+                    <img src="بيتزا/ليموناضة.jpg" alt="فريش">
                     <h4>جوافه حليب </h4>
-                    <p class="description">جوافه حليب</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 65 ج.م</button>
                     </div>
@@ -1537,9 +1589,8 @@
             </div>
 
             <div class="menu-item" data-drink="lemonade">
-                    <img src="بيتزا/ليموناضة.jpg" alt="ليمون">
+                    <img src="بيتزا/ليموناضة.jpg" alt="فريش">
                     <h4>فلوريدا كوكتيل </h4>
-                    <p class="description">كوكتيل فريشات</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 75 ج.م</button>
                     </div>
@@ -1551,7 +1602,6 @@
             <div class="menu-grid">
                 <div class="menu-item">
                     <h4>ام علي</h4>
-                    <p class="description">ام علي ساده</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 85 ج.م</button>
                     </div>
@@ -1560,7 +1610,6 @@
 
                 <div class="menu-item">
                     <h4>ام علي لوتس</h4>
-                    <p class="description">ام علي لوتس</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 100 ج.م</button>
                     </div>
@@ -1568,8 +1617,8 @@
                 </div>
 
                 <div class="menu-item">
-                    <h4>ام علي شوكلت</h4>
-                    <p class="description">ام علي شوكلت</p>
+                    <h4>ام علي </h4>
+                    <p class="description"> شوكلت</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 100 ج.م</button>
                     </div>
@@ -1611,7 +1660,6 @@
             <div class="menu-grid">
                 <div class="menu-item">
                     <h4>وافل شوكلت</h4>
-                    <p class="description">وافل شوكلت</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 75 ج.م</button>
                     </div>
@@ -1620,7 +1668,6 @@
 
                 <div class="menu-item">
                     <h4>وافل نيوتيلا</h4>
-                    <p class="description">وافل نيوتيلا</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 150 ج.م</button>
                     </div>
@@ -1629,7 +1676,6 @@
 
                 <div class="menu-item">
                     <h4>وافل لوتس</h4>
-                    <p class="description">وافل لوتس</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 75 ج.م</button>
                     </div>
@@ -1638,7 +1684,6 @@
 
                 <div class="menu-item">
                     <h4>وافل وايت شوكلت</h4>
-                    <p class="description">وافل وايت شوكلت</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 75 ج.م</button>
                     </div>
@@ -1647,7 +1692,6 @@
 
                 <div class="menu-item">
                     <h4>وافل كيندر </h4>
-                    <p class="description">وافل كيندر</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 80 ج.م</button>
                     </div>
@@ -1658,7 +1702,6 @@
 
          <div class="menu-item">
                     <h4>وافل اسبشيال</h4>
-                    <p class="description">وافل اسبشيال </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 125 ج.م</button>
                     </div>
@@ -1671,7 +1714,6 @@
             <div class="menu-grid">
                 <div class="menu-item">
                     <h4>v كولا</h4>
-                    <p class="description">vكولا</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 25 ج.م</button>
                     </div>
@@ -1680,7 +1722,6 @@
 
                 <div class="menu-item">
                     <h4>سبرايت</h4>
-                    <p class="description">سبرايت </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 25 ج.م</button>
                     </div>
@@ -1689,7 +1730,6 @@
 
                 <div class="menu-item">
                     <h4>فانتا تفاح</h4>
-                    <p class="description">فانتا ب طعم التفاح</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 25 ج.م</button>
                     </div>
@@ -1698,7 +1738,6 @@
 
                 <div class="menu-item">
                     <h4>فيوري </h4>
-                    <p class="description">فيوري </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 25 ج.م</button>
                     </div>
@@ -1707,7 +1746,6 @@
 
                 <div class="menu-item">
                     <h4>v كولا </h4>
-                    <p class="description">v كولا</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 25 ج.م</button>
                     </div>
@@ -1718,7 +1756,6 @@
 
           <div class="menu-item">
                     <h4>بيبسي </h4>
-                    <p class="description">بيبسي كولا </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 25 ج.م</button>
                     </div>
@@ -1729,7 +1766,6 @@
 
           <div class="menu-item">
                     <h4>تويست</h4>
-                    <p class="description">تويست</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 25 ج.م</button>
                     </div>
@@ -1740,7 +1776,6 @@
 
           <div class="menu-item">
                     <h4>فيروز</h4>
-                    <p class="description">فيروز اناناس</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 25 ج.م</button>
                     </div>
@@ -1751,7 +1786,6 @@
 
           <div class="menu-item">
                     <h4>ريدبول</h4>
-                    <p class="description">ريدبول </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 65 ج.م</button>
                     </div>
@@ -1762,7 +1796,6 @@
 
           <div class="menu-item">
                     <h4>شويبس </h4>
-                    <p class="description">شويبس خوخ</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 25 ج.م</button>
                     </div>
@@ -1773,7 +1806,6 @@
 
           <div class="menu-item">
                     <h4>بيريل </h4>
-                    <p class="description">بيريل </p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 30 ج.م</button>
                     </div>
@@ -1783,8 +1815,7 @@
         </div>
 
           <div class="menu-item">
-                    <h4>ماكسي </h4>
-                    <p class="description">ماكسي كولا</p>
+                    <h4>ماكسي كولا </h4>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 25 ج.م</button>
                     </div>
@@ -1795,7 +1826,6 @@
 
           <div class="menu-item">
                     <h4>مياه</h4>
-                    <p class="description">مياه</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="regular">السعر - 10 ج.م</button>
                     </div>
@@ -1951,6 +1981,32 @@
 
     <script src="script.js"></script>
     <script>
+    // دالة لعرض الصورة في نافذة منبثقة
+    function showProductImage(imageSrc) {
+        const modal = document.createElement('div');
+        modal.className = 'image-modal';
+        modal.innerHTML = `
+            <div class="image-modal-content">
+                <span class="close-modal">&times;</span>
+                <img src="${imageSrc}" alt="صورة المنتج" style="max-width: 100%; max-height: 80vh;">
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // إضافة حدث إغلاق النافذة عند النقر على ×
+        modal.querySelector('.close-modal').addEventListener('click', () => {
+            modal.remove();
+        });
+        
+        // إضافة حدث إغلاق النافذة عند النقر خارج الصورة
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.remove();
+            }
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         // كود التحكم في شريط التنقل عند التمرير
         let lastScrollTop = 0;
