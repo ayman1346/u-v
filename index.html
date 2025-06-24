@@ -92,18 +92,21 @@
             position: absolute;
             top: 0;
             right: 0;
-            background-color: #4CAF50;
-            color: white;
+            background-color: #000;
+            color: #FFD700;
             border: none;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 0.7rem;
-        }
+            font-size: 0.4rem;
+            transition: background-color 0.3s;
+            font-weight: bold;
+}
 
-        .view-image-btn:hover {
-            background-color: #45a049;
-        }
+.view-image-btn:hover {
+    background-color: #FFD700;
+    color: #000;
+}
 
         .menu-item img {
             width: 80px;
@@ -331,9 +334,11 @@
             <div class="menu-grid hot-drinks">
                 <div class="menu-item special">
                     <!-- لتبديل الصورة، قم بتغيير قيمة data-image -->
-                    <button class="view-image-btn" data-image="صوره تشكن رانش.jpg" onclick="showProductImage(this.getAttribute('data-image'))">عرض الصورة</button>
+                    <button class="view-image-btn" data-image="صوره تشكن رانش .jpg" onclick="showProductImage(this.getAttribute('data-image'))">عرض الصورة</button>
                     <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                    <h4>بيتزا تشكن رانش</h4>
+                    <h4> تشكن رانش</h4>
+                    <h4>.</h4>
+                    <h4>.</h4>
                     <p class="description">صوص رانش جبنه موتزريلا شرائح فراخ فلفل الوان زيتون </p>
                     <div class="pizza-sizes">
                         <button class="size-btn" data-size="medium">وسط - 150 ج.م</button>
@@ -345,7 +350,7 @@
                 <div class="menu-item special">
                     <button class="view-image-btn" onclick="showProductImage('بيتزا/بيتزا1.jpg')">عرض الصورة</button>
                     <img src="بيتزا/بيتزا1.jpg" alt="بيتزا">
-                    <h4>بيتزا بسطرمة كيري</h4>
+                    <h5> بسطرمة كيري</h5>
                     <p class="description">صوص بيتزا جبنه موتزريلا شرايح بسطرمه قطع كيري فلفل الوان</p>
                     <div class="pizza-sizes">
                         <button class="size-btn" data-size="medium">وسط - 160 ج.م</button>
@@ -357,7 +362,9 @@
                 <div class="menu-item special">
                     <button class="view-image-btn" onclick="showProductImage('مكرونة/مكرونة.jpg')">عرض الصورة</button>
                     <img src="مكرونة/مكرونة.jpg" alt="مكرونة">
-                    <h4> ميكس جبن</h4>
+                    <h5> ميكس جبن</h5>
+                    <h4>.</h4>
+                     <h4>.</h4>
                     <h4>.</h4>
                     <h4>.</h4>
                     <h4>.</h4>
@@ -365,9 +372,7 @@
                     <h4>.</h4>
                     <h4>.</h4>
                     <h4>.</h4>
-                    <h4>.</h4>
-                    <h4>.</h4>
-                    <p class="description">مكرونة بينا مع خلطة الجبن المميزة</p>
+                    <p class="description">مكرونه بنا وايت صوص صوص شيدر جبنه كيري جبنه موتزريلا</p>
                     <div class="sizes">
                         <button class="size-btn" data-size="single">السعر - 140 ج.م</button>
                     </div>
@@ -377,7 +382,7 @@
                 <div class="menu-item">
                     <button class="view-image-btn" onclick="showProductImage('بيتزا/مكرونة.jpg')">عرض الصورة</button>
                     <img src="بيتزا/مكرونة.jpg" alt="مكرونة ">
-                    <h4> ميكس لحوم</h4>
+                    <h5> ميكس لحوم</h5>
                     <h4>.</h4>
                     <h4>.</h4>
                     <h4>.</h4>
@@ -401,8 +406,8 @@
                 <h4> مارجريتا</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا</p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 90 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 110 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 90 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 110 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -413,8 +418,8 @@
                 <h4> ميكس جبن</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا جبنه بارميزان جبنه شيدر جبنه كيري جبنه تركي </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط    150 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 180 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم    150 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 180 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -425,8 +430,8 @@
                 <h4> مشروم</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا مشروم فلفل الوان زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 120 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 145 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 120 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 145 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -437,8 +442,8 @@
                 <h4> تشكن</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا شرائح فراخ فلفل الوان زيتون  </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 130 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 155 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 130 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 155 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -449,8 +454,8 @@
                 <h4> تشكن رانش</h4>
                 <p class="description">صوص رانش جبنه موتزريلا شرائح فراخ فلفل الوان زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 150 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 180 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 150 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 180 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -461,8 +466,8 @@
                 <h4> تشكن دوريتوس</h4>
                 <p class="description">صوص بيتزا اسبايسي جبنه موتزريلا شرائح فراخ فلفل حار زيتون دوريتوس</p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 135 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 160 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 135 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 160 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -473,8 +478,8 @@
                 <h4> تشكن سوبريم</h4>
                 <p class="description">صوص بيتزا بيبروني سلامي شرائح فراخ مشروم فلفل الوان زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 160 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 195 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 160 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 195 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -485,8 +490,8 @@
                 <h4> بيمبو</h4>
                 <p class="description">صوص بيتزا شرائح فراخ تركي مدخن زيتون فلفل الوان صوص رانش </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 135 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 160 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 135 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 160 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -497,8 +502,8 @@
                 <h4> بيبروني</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا بيبروني ميكس جبن</p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 160 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 190 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 160 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 190 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -509,8 +514,8 @@
                 <h4> سلامي</h4>
                 <p class="description">صوص جبنه موتزريلا سلامي فلفل الوان زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 150 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 180 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 150 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 180 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -521,8 +526,8 @@
                 <h4> سموكي</h4>
                 <p class="description">صوص رانش جبنه موتزريلا تركي مدخن سلامي بيف بيكون كيري </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 190 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 240 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 190 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 240 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -533,8 +538,8 @@
                 <h4> سوبر سوبريم</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا بيبروني زيتون سلامي بيف توبنج مشروم فلفل الوان </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 165 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 200 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 165 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 200 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -545,8 +550,8 @@
                 <h4> سوسيس</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا سوسيس فلفل الوان زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 140 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 170 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 140 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 170 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -557,8 +562,8 @@
                 <h4> بسطرمة</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا شرائح بسطرمه فلفل الوان </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 135 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 170 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 135 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 170 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -569,8 +574,8 @@
                 <h4> بسطرمة كيري</h4>
                 <p class="description">صوص بيتزا جبنه موتزرييلا شرائح بسطرمه قطع كيري فلفل الوان </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 160 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 200 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 160 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 200 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -581,8 +586,8 @@
                 <h4> سدق</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا سدق بلدي فلفل الوان زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 175 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 210 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 175 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 210 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -593,8 +598,8 @@
                 <h4> سدق كيري</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا سدق بلدي قطع كيري فلفل الوان زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 190 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 240 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 190 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 240 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -605,8 +610,8 @@
                 <h4> مفروم</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا لحم مفروم طازج فلفل الوان زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 170 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 210 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 170 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 210 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -617,8 +622,8 @@
                 <h4> برجر</h4>
                 <p class="description">صوص بيتزا خيار مخلل فلفل الوان برجر لحم بلدي موتزريلا صوص بيج تيستي </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 220 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 260 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 220 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 260 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -629,8 +634,8 @@
                 <h4> ميكس لحوم</h4>
                 <p class="description">صوص جبنه موتزريلا سوسيس سدق بلدي شرائح بسطرمه لحم مفروم فلفل الوان زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 170 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 220 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 170 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 220 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -641,8 +646,8 @@
                 <h4> تونة</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا قطع تونه فلفل الوان زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 190 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 220 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 190 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 220 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -653,8 +658,8 @@
                 <h4> شريمب تونة</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا قطع تونه جمبري فلفل الوان شرائح بصل زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 250 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 280 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 250 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 280 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -665,8 +670,8 @@
                 <h4> جمبري</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا جمبري فلفل الوان شرائح بصل زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 210 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 260 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 210 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 260 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -677,8 +682,8 @@
                 <h4> سي فوود</h4>
                 <p class="description">صوص بيتزا جمبري كاليماري كابوريا فلفل الوان شرائح بصل زيتون </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 190 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 260 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 190 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 260 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
@@ -689,8 +694,8 @@
                 <h4> سي رانش</h4>
                 <p class="description">صوص بيتزا جبنه موتزريلا جمبري كاليماري كابوريا فلفل الوان شرائح بصل زيتون صزص رانش </p>
                 <div class="sizes">
-                    <button class="size-btn" data-size="medium">وسط - 210 ج.م</button>
-                    <button class="size-btn" data-size="large">كبير - 285 ج.م</button>
+                    <button class="size-btn" data-size="medium">ميديم - 210 ج.م</button>
+                    <button class="size-btn" data-size="large">لارج - 285 ج.م</button>
                 </div>
                 <button class="add-to-cart-btn"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
             </div>
