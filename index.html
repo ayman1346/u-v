@@ -7,6 +7,77 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- إضافة حماية للموقع -->
+    <script>
+        // منع نسخ المحتوى
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // منع التحديد
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+
+        // منع نسخ المحتوى
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+        });
+
+        // منع الصور من النقر الأيمن
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.style.userSelect = 'none';
+                img.style.webkitUserSelect = 'none';
+                img.style.webkitTouchCallout = 'none';
+                img.style.webkitUserDrag = 'none';
+                img.style.MozUserSelect = 'none';
+                img.style.msUserSelect = 'none';
+                img.style.userDrag = 'none';
+                img.style.khtmlUserSelect = 'none';
+                img.style.webkitUserSelect = 'none';
+                img.style.webkitUserDrag = 'none';
+            });
+        });
+
+        // منع التحميل المباشر للصور
+        function preventImageRightClick(e) {
+            if (e.button == 2) {
+                e.preventDefault();
+                alert('لا يمكن تحميل الصور مباشرة');
+            }
+        }
+
+        // حماية الصفحة من التحميل المباشر
+        if (window.self !== window.top) {
+            window.top.location.href = window.self.location.href;
+        }
+    </script>
+    
+    <!-- إضافة متغيرات CSS للحماية -->
+    <style>
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        img {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            pointer-events: none;
+            -webkit-pointer-events: none;
+            -moz-pointer-events: none;
+            -ms-pointer-events: none;
+            -o-pointer-events: none;
+        }
+    </style>
     <style>
         * {
             box-sizing: border-box;
@@ -336,9 +407,7 @@
                     <!-- لتبديل الصورة، قم بتغيير قيمة data-image -->
                     <button class="view-image-btn" data-image="صوره تشكن رانش .jpg" onclick="showProductImage(this.getAttribute('data-image'))">عرض الصورة</button>
                     <img src="بيتزا/بيتزا.jpg" alt="بيتزا">
-                    <h4> تشكن رانش</h4>
-                    <h4>.</h4>
-                    <h4>.</h4>
+                    <h5> تشكن رانش</h5>
                     <p class="description">صوص رانش جبنه موتزريلا شرائح فراخ فلفل الوان زيتون </p>
                     <div class="pizza-sizes">
                         <button class="size-btn" data-size="medium">وسط - 150 ج.م</button>
