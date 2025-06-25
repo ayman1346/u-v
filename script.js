@@ -152,8 +152,236 @@ document.querySelectorAll('.menu-image-item img').forEach(img => {
     img.addEventListener('click', function() {
         modal.style.display = 'block';
         modalImg.src = this.src;
+        modalCaption.textContent = this.alt;
     });
 });
+
+// Initialize search functionality
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+
+// Collect all menu items from the page
+const menuItems = [];
+
+// Function to collect menu items
+function collectMenuItems() {
+    // Get all menu items from different sections
+    const allItems = document.querySelectorAll('.menu-item');
+
+    // Add items to the menuItems array
+    allItems.forEach(item => {
+        // Get all text content from the item
+        const title = item.querySelector('h4, h5').textContent;
+        const description = item.querySelector('.description')?.textContent || '';
+        const image = item.querySelector('img')?.src || '';
+        const price = item.querySelector('.price, .sizes button')?.textContent || '';
+        
+        // Get section name
+        const section = item.closest('.menu')?.querySelector('h2')?.textContent || '';
+        
+        // Get sizes if available
+        const sizes = [...item.querySelectorAll('.sizes button')].map(btn => btn.textContent);
+        
+        menuItems.push({
+            title: title.toLowerCase(),
+            description: description.toLowerCase(),
+            section: section.toLowerCase(),
+            image,
+            price,
+            sizes,
+            element: item
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    collectMenuItems();
+    
+    // Search functionality
+    searchInput.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        
+        // Clear previous results
+        searchResults.innerHTML = '';
+        
+        // If search term is empty, hide results
+        if (!searchTerm) {
+            searchResults.classList.remove('active');
+            return;
+        }
+        
+        // Filter items that match search term
+        const results = menuItems.filter(item => 
+            item.title.includes(searchTerm) || 
+            item.description.includes(searchTerm) || 
+            item.section.includes(searchTerm)
+        );
+        
+        // Show results
+        if (results.length > 0) {
+            searchResults.classList.add('active');
+            
+            results.forEach(item => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'result-item';
+                
+                // Create result content
+                const resultContent = `
+                    <div class="search-product">
+                        <button class="view-image-btn" onclick="showProductImage('${item.image}')">عرض الصورة</button>
+                        <img src="${item.image}" alt="${item.title}">
+                        <h4>${item.title}</h4>
+                        ${item.description ? `<p class="description">${item.description}</p>` : ''}
+                        <div class="sizes">
+                            ${item.sizes.map(size => `
+                                <button class="size-btn" data-size="${size}">${size}</button>
+                            `).join('')}
+                        </div>
+                        <button class="add-to-cart-btn">
+                            <i class="fas fa-cart-plus"></i> أضف للسلة
+                        </button>
+                    </div>
+                `;
+                
+                resultItem.innerHTML = resultContent;
+                
+                // Add click event to navigate to the item
+                resultItem.addEventListener('click', () => {
+                    // Scroll to the item's section
+                    item.element.scrollIntoView({ behavior: 'smooth' });
+                    // Hide search results
+                    searchResults.classList.remove('active');
+                    // Clear search input
+                    searchInput.value = '';
+                });
+                
+                searchResults.appendChild(resultItem);
+            });
+        } else {
+            searchResults.classList.remove('active');
+        }
+    });
+});
+
+// Search functionality
+searchInput.addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    
+    // Clear previous results
+    searchResults.innerHTML = '';
+    
+    // If search term is empty, hide results
+    if (!searchTerm) {
+        searchResults.classList.remove('active');
+        return;
+    }
+    
+    // Filter items that match search term
+    const results = menuItems.filter(item => 
+        item.title.includes(searchTerm) || 
+        item.description.includes(searchTerm)
+    );
+    
+    // Show results
+    if (results.length > 0) {
+        searchResults.classList.add('active');
+        
+        results.forEach(item => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'result-item';
+            
+            resultItem.innerHTML = `
+                <img src="${item.image}" alt="${item.title}">
+                <div>
+                    <h4>${item.title}</h4>
+                    <p>${item.description}</p>
+                    <span>${item.price}</span>
+                </div>
+            `;
+            
+            // Add click event to navigate to the item
+            resultItem.addEventListener('click', () => {
+                // Scroll to the item's section
+                item.element.scrollIntoView({ behavior: 'smooth' });
+                // Hide search results
+                searchResults.classList.remove('active');
+                // Clear search input
+                searchInput.value = '';
+            });
+            
+            searchResults.appendChild(resultItem);
+        });
+    } else {
+        searchResults.classList.remove('active');
+    }
+});
+
+// Hide results when clicking outside
+document.addEventListener('click', (e) => {
+    if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.classList.remove('active');
+    }
+});
+
+// Hide results when pressing escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        searchResults.classList.remove('active');
+        searchInput.value = '';
+    }
+});
+
+// Hide results when clicking on the search input
+searchInput.addEventListener('click', () => {
+    if (!searchInput.value) {
+        searchResults.classList.remove('active');
+    }
+});
+
+// Handle enter key in search input
+searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && searchResults.classList.contains('active')) {
+        const firstResult = searchResults.querySelector('.result-item');
+        if (firstResult) {
+            firstResult.click();
+        }
+    }
+});
+
+// Handle arrow keys for navigation
+let activeIndex = -1;
+
+searchInput.addEventListener('keydown', (e) => {
+    if (!searchResults.classList.contains('active')) return;
+    
+    const resultItems = searchResults.querySelectorAll('.result-item');
+    
+    switch(e.key) {
+        case 'ArrowDown':
+            e.preventDefault();
+            activeIndex = (activeIndex + 1) % resultItems.length;
+            highlightResult(activeIndex);
+            break;
+            
+        case 'ArrowUp':
+            e.preventDefault();
+            activeIndex = (activeIndex - 1 + resultItems.length) % resultItems.length;
+            highlightResult(activeIndex);
+            break;
+            
+        case 'Enter':
+            if (activeIndex >= 0) {
+                resultItems[activeIndex].click();
+            }
+            break;
+    }
+});
+
+function highlightResult(index) {
+    const resultItems = searchResults.querySelectorAll('.result-item');
+    resultItems.forEach(item => item.classList.remove('active'));
+    resultItems[index].classList.add('active');
+}
 
 // Close modal when clicking the X
 closeModal.addEventListener('click', () => {
